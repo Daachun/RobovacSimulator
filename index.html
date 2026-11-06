@@ -5,7 +5,7 @@
 <title>小小清洁家</title>
 <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
-<meta name='description' content='亲自驾驶的扫地机器人开发试玩 · WebGL2 · 建议键盘鼠标'>
+
 <style>
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#172b29;color:#eff4e9;font:16px system-ui,sans-serif}#canvas{display:block;outline:none}#loading{position:fixed;inset:0;display:grid;place-items:center;background:#172b29;z-index:5}article{box-sizing:border-box;width:min(90vw,600px);padding:24px;border:1px solid #7aa88c;border-radius:14px;background:#243d35}h1{font-size:28px}p{line-height:1.6}progress{width:100%;height:20px}button{font:inherit;min-height:40px;padding:8px 18px;border-radius:8px;border:2px solid #8eb69b;background:#eaf0df;color:#173c2e;cursor:pointer}button:focus-visible{outline:3px solid #ffcf65;outline-offset:3px}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:140px;overflow:auto;font-size:13px}#retry{display:none}#web-tools{display:none;position:fixed;right:8px;bottom:5px;z-index:4}#web-tools button{font-size:12px;min-height:28px;padding:3px 7px}#small{position:fixed;left:50%;top:4px;transform:translateX(-50%);z-index:4;background:#172b29ed;padding:6px 12px;border-radius:8px;font-size:13px;display:none}#small button{font-size:12px;min-height:24px;padding:2px 5px}
 </style>
@@ -16,7 +16,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#172b29;col
 <div id="small">小窗口建议全屏；游戏设置可放大文字。<button id="dismiss">知道了</button></div>
 <div id="loading" role="status" aria-live="polite"><article><h1>小小清洁家</h1><p id="message">正在加载住宅与机器人，请稍候。建议使用键盘和鼠标。</p><progress id="progress" aria-label="加载进度"></progress><p id="bytes"></p><button id="retry">重新加载</button><details id="details" hidden><summary>技术信息</summary><pre id="error"></pre></details></article></div>
 <script>
-const config={"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":17230232,"index.wasm":37700666},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const config={"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":102557588,"index.wasm":37700666},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const overlay=document.getElementById('loading'),message=document.getElementById('message'),retry=document.getElementById('retry');
 let started=false,failed=false;
 function fail(error,context='加载未完成') {failed=true;overlay.style.display='grid';message.textContent=context+'。请检查网络，使用支持 WebGL2 的桌面浏览器并开启硬件加速后重试。重载会丢失本轮未保存的清洁进度；已保存组件通常仍保留。';document.getElementById('progress').hidden=true;document.getElementById('details').hidden=false;document.getElementById('error').textContent=String(error?.message||error);retry.style.display='inline-block';retry.focus();}
